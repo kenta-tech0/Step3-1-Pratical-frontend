@@ -30,7 +30,7 @@ jobs:
           echo "DEBUG: .env file created"
 
       - name: npm install, build, and test
-      #1 - Rebuild with HTTPS endpoint
+      #1 - Rebuild with HTTPS endpoint (no trailing slash)
         env:
           NEXT_PUBLIC_API_ENDPOINT: ${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}
         run: |

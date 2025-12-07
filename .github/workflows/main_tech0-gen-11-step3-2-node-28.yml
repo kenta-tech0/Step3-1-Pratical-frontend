@@ -23,10 +23,13 @@ jobs:
         with:
           node-version: '20.x'
 
+      - name: Create .env file with API endpoint
+        run: |
+          echo "NEXT_PUBLIC_API_ENDPOINT=${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}" > .env
+          cat .env
+
       - name: npm install, build, and test
       #1
-        env:
-          NEXT_PUBLIC_API_ENDPOINT: ${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}
         run: |
           npm install
           npm run build --if-present

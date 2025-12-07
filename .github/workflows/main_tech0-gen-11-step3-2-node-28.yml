@@ -27,12 +27,16 @@ jobs:
         run: |
           echo "NEXT_PUBLIC_API_ENDPOINT=${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}" > .env
           cat .env
+          echo "DEBUG: .env file created"
 
       - name: npm install, build, and test
       #1
         env:
           NEXT_PUBLIC_API_ENDPOINT: ${{ secrets.NEXT_PUBLIC_API_ENDPOINT }}
         run: |
+          echo "DEBUG: Environment variable value: $NEXT_PUBLIC_API_ENDPOINT"
+          echo "DEBUG: Contents of .env file:"
+          cat .env
           npm install
           npm run build --if-present
           npm run test --if-present
